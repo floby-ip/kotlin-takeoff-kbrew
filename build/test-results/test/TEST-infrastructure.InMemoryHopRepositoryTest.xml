@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="infrastructure.InMemoryHopRepositoryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-21T21:28:47" hostname="L01465.local" time="0.026">
+  <properties/>
+  <testcase name="should find all similar hops" classname="infrastructure.InMemoryHopRepositoryTest" time="0.026"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
