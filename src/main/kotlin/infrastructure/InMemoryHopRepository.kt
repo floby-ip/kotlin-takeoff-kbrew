@@ -15,11 +15,10 @@ class InMemoryHopRepository : HopRepository {
 
     override fun findByName(key: String) = hops[key.uppercase().trim()]
 
-    override fun findSimilar(hop: Hop): Set<Hop> {
+    override fun findSimilar(hop: Hop): Set<Hop> { // TODO exo refacto
         var res = emptySet<Hop>()
-        if (hop.similarTo != null && !hop.similarTo.isEmpty()) {
-            val names = hop.similarTo!!.split(",")
-            for (s in names) {
+        if (!hop.similarTo.isEmpty()) {
+            for (s in hop.similarTo) {
                 val similar = findByName(s)
                 if (similar != null) {
                     res = res.plus(similar)
@@ -27,6 +26,10 @@ class InMemoryHopRepository : HopRepository {
             }
         }
         return res
+    }
+
+    override fun clear() {
+        hops = emptyMap()
     }
 
 }

@@ -7,4 +7,5 @@ interface HopRepository {
     fun save(hop: Hop)
     fun findByName(key: String): Hop?
     fun findSimilar(hop: Hop): Set<Hop>
+    fun clear(): Unit
 }

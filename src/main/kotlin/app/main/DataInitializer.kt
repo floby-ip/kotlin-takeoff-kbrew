@@ -1,17 +1,13 @@
 package app.main
 
+import app.di.DependencyInjection
 import domain.country.model.Country
-import domain.hop.driven.HopRepository
 import domain.hop.model.Hop
 import domain.hop.model.HopType
 import domain.quantities.PercentRange
 import domain.quantities.QuantityRange
 
 const val hopListFile = "hop-list.txt"
-
-object DataInitializer {
-    lateinit var hopRepository: HopRepository
-}
 
 fun loadHopList() =
     object {}.javaClass.getResource("/$hopListFile")?.readText()
@@ -40,9 +36,10 @@ private data class TmpHop(
         alpha = alpha ?: error("alpha is required for $name l.$index"),
         beta = beta ?: error("beta is required for $name l.$index"),
         coH = coH ?: error("coH is required for $name l.$index"),
+        oil = oil,
         type = type ?: error("type is required for $name l.$index"),
         profile = profile ?: "",
-        similarTo = similarTo,
+        similarTo = similarTo?.split(",")?.map { it.trim() } ?: emptyList(),
     )
 
     fun handleLine(index: Int, line: String): TmpHop =
@@ -82,5 +79,5 @@ private data class TmpHop(
             && similarTo.isNullOrBlank()
 
     private fun save(index: Int): TmpHop = this.takeUnless { isEmpty() }?.toHop(index)
-        ?.let { DataInitializer.hopRepository.save(it) }.run { TmpHop() }
+        ?.let { DependencyInjection.hopRepository.save(it) }.run { TmpHop() }
 }

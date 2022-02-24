@@ -2,6 +2,7 @@ package domain.hop.model
 
 import domain.country.model.Country
 import domain.quantities.PercentRange
+import domain.quantities.QuantityRange
 
 data class Hop(
     val name: String,
@@ -9,9 +10,10 @@ data class Hop(
     val alpha: PercentRange,
     val beta: PercentRange,
     val coH: PercentRange,
+    val oil: QuantityRange?,
     val type: List<HopType>,
     val profile: String,
-    val similarTo: String? = null,
+    val similarTo: List<String>,
 )
 
 enum class HopType {
