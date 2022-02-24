@@ -14,4 +14,6 @@ data class Malt(
 
 enum class MaltType {
     PILSNER,
+    MARRIS_OTTER,
+    MUNICH,
 }
