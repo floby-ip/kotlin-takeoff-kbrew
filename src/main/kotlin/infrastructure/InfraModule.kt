@@ -8,5 +8,6 @@ object InfraModule {
         DependencyInjection.yeastRepository = InMemoryYeastRepository()
         DependencyInjection.maltRepository = InMemoryMaltRepository()
         DependencyInjection.recipeRepository = InMemoryRecipeRepository()
+        DependencyInjection.otherIngredientRepository = InMemoryOtherIngredientRepository()
     }
 }
